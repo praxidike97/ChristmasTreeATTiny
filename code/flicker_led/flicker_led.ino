@@ -3,6 +3,9 @@
 // Pins for the LEDs
 int ledPins[] = {5, 6, 7};
 
+// Pin for the star on top
+int starPin = 3;
+
 // Offsets for the Perlin noise
 int offsets[] = {0, 0, 0};
 int counter = 0;
@@ -14,10 +17,14 @@ void setup() {
 
     pinMode(ledPins[i], OUTPUT);
   }
+
+  pinMode(starPin, OUTPUT);
 }
 
 
 void loop() {
+  // Star on top is always on
+  digitalWrite(starPin, HIGH);
   
   for (int i = 0; i < (sizeof(offsets) / sizeof(offsets[0])); i++){    
     int brightness = pow(2.71828, 0.03 * (inoise8(counter + offsets[i]) - 50));
