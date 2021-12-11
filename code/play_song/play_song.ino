@@ -1,4 +1,4 @@
-
+// Somehow works much better than the Arduino tone() function
 #include <TimerFreeTone.h>
 
 // Song taken from https://github.com/robsoncouto/arduino-songs
@@ -154,7 +154,7 @@ void setup() {
 }
 
 void loop() { 
-
+  // Start from the beginning after the song is finished
   if (thisNote >= notes * 2){
     thisNote = 0;
   }
@@ -171,7 +171,7 @@ void loop() {
   }
 
   // we only play the note for 90% of the duration, leaving 10% as a pause
-  TimerFreeTone(buzzer, melody[thisNote], noteDuration * 0.9);
+  TimerFreeTone(buzzerPin, melody[thisNote], noteDuration * 0.9);
   
   // Wait for the specief duration before playing the next note.
   delay(noteDuration);
